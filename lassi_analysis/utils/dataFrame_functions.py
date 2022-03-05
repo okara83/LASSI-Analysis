@@ -1,7 +1,7 @@
-import pandas as pd
+import pandas
 
 def c2d(coordinatesDictionary:dict,timestep,moleculeID):
-    return pd.DataFrame(coordinatesDictionary["structured-data"][timestep][moleculeID]).T
+    return pandas.DataFrame(coordinatesDictionary["structured-data"][timestep][moleculeID]).T
 
 def atom1ToOrigin(atomsdf):
     first_row = atomsdf.iloc[[0]].values[0]
