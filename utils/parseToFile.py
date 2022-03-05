@@ -51,3 +51,4 @@ def parseToFile(open_file:str,save_as:str):
 
     with open(f"{save_as}.json","w") as file:
         json.dump(outdict,file)
+    return
