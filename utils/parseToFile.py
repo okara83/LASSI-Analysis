@@ -2,7 +2,7 @@ import re
 import json
 
 
-def parseToFile(open_file: str, save_as = False):
+def generate_dict(open_file: str)->dict:
     '''Function to parse a trajectory file and output a dictionary'''
     p = open(open_file, "r").read() + "ITEM"
     all_timestamps = re.findall("ITEM:\sATOMS.*?\n(.*?)ITEM", p, re.DOTALL)
@@ -61,9 +61,10 @@ def parseToFile(open_file: str, save_as = False):
         "natoms": natoms,
     }
 
-    if save_as == False:
-        return outdict
+    return outdict
 
+def save_parsed_dict(open_file:str,save_as:str):
+    f = generate_dict(open_file)
     with open(f"{save_as}.json", "w") as file:
-        json.dump(outdict, file)
+        json.dump(f, file)
     return
